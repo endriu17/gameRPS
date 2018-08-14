@@ -1,0 +1,92 @@
+body {
+	text-align: center;
+   font-family: arial;
+   background-color: #fcfdd7;
+   font-size: 18px;
+   padding: 20px 0;
+}
+
+#resultYtext, #resultXtext {
+  width: 49%;
+  font-size: 16px;
+  text-align: center;
+  height: 50px;
+  display: inline-block;
+  background-color: #fcfdd7;
+  color: #000;
+  
+}
+
+button  {
+  display: inline-block;
+  vertical-align: middle;
+  width: 130px;
+  height: 40px;
+  border: none;
+  padding: 10px;
+  margin: 20px auto;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border-radius: 20px;
+  outline: none;
+  background-color: #f8aa0d;
+}
+
+button:hover {
+   opacity: 0.7;
+   cursor: pointer;
+}
+
+#output {
+  height: 150px;
+  max-width: 100%;
+  margin: 0 auto;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+#newGame-button {
+  background-color: #25de39;
+  font-size: 18px;
+}
+
+#reset-button {
+  background-color: #f01823;
+  font-size: 18px;
+  width: 80px;
+}
+
+ #resultY, #resultX {
+  color: white;
+  height: 70px;
+  width: 49%;
+  text-align: center;
+  padding: 0;
+}
+
+#resultY {
+  float: right;
+}
+#resultX {
+  float: left;
+}
+
+#tableY, #tableX {
+  width: 49%;
+  min-height: 40px;
+  text-align: center;
+  margin: 25px auto;
+  color: black;
+  font-size: 16px;
+  vertical-align: middle;
+  background-color: 
+}
+
+#tableY {
+  float: right;
+}
+
+#tableX {
+  float: left;
+}

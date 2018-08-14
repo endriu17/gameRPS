@@ -22,9 +22,9 @@ disableBtn();
 // variable that collects the number of completed rounds
 
 var rounds = btnNewGame.addEventListener('click', function newGame(){
-  return rounds; 
+  return rounds;
 }
-);    
+);
 
 // computer random choice function
 
@@ -60,7 +60,7 @@ function playerChoice(playerMove){
 
 // cleaning div function and reset button
 
-var cleanDiv = function(divName){        
+var cleanDiv = function(divName){
   document.getElementById(divName).innerHTML = "";
 }
 
@@ -75,7 +75,7 @@ btnReset.addEventListener('click', function resetGame(){
 }
 );
 
-// button NEW GAME 
+// button NEW GAME
 
 btnNewGame.addEventListener('click', function newGame(){
           var newGameBtn = window.prompt('Enter round number');
@@ -125,7 +125,7 @@ function disableBtn() {
     document.getElementById("rock-button").disabled = true;
     document.getElementById("paper-button").disabled = true;
     document.getElementById("scissors-button").disabled = true;
-    output.innerHTML = "<br><br> Click NEW GAME button " + "<br><br> to play the game...!";
+    output.innerHTML = "<br><br> Click GAME button " + "<br><br> to play the game...!";
 }
 
 // results function
@@ -154,7 +154,7 @@ function playResult(){
             output.innerHTML = '<br>YOU WON THE ENTIRE GAME!!! <br><br> Will You play again? <br><br> Click on the NEW GAME button!';
             counter.playerWin++;
             tableX.innerHTML = 'Your winnings: <br><br>' + '<b>' + counter.playerWin +'</b>';
-           
+
         }
 }
 
