@@ -15,6 +15,8 @@ var btnNewGame = document.getElementById('newGame-button');
 var btnReset = document.getElementById('reset-button');
 var buttons = document.querySelectorAll('.player-move');
 
+var modalHeader = document.querySelector('.modal-header');
+
 var params = {
   playerWin: 0,
   computerWin: 0,
@@ -110,7 +112,7 @@ function playResult() {
     cleanDiv('resultXtext');
     cleanDiv('resultYtext');
     disableBtn();
-    output.innerHTML = '<br>Computer won! <br><br> Will You play again? <br><br> Click on the NEW GAME button!';
+    modalHeader.innerHTML = '<br>Computer won! <br><br> Will You play again? <br><br> Click on the NEW GAME button!';
     params.computerWon++;
     params.countY = 0;
     params.countX = 0;
@@ -121,7 +123,7 @@ function playResult() {
     cleanDiv('resultXtext');
     cleanDiv('resultYtext');
     disableBtn();
-    output.innerHTML = '<br>YOU WON THE ENTIRE GAME!!! <br><br> Will You play again? <br><br> Click on the NEW GAME button!';
+    modalHeader.innerHTML = '<br>YOU WON THE ENTIRE GAME!!! <br><br> Will You play again? <br><br> Click on the NEW GAME button!';
     params.playerWon++;
     params.countY = 0;
     params.countX = 0;
