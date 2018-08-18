@@ -5,41 +5,111 @@
 body {
 	// text-align: center;
 	font-family: arial;
-	background-color: #fcfdd7;
+	background-color: #f2f3ee;
 	// font-size: 18px;
 	padding: 0;
 	margin: 0;
 	display: block;
 	position: relative;
+
 	.play-buttons {
 		display: flex;
-		width: 60%;
-		padding: 20px;
+		width: 50%;
+		padding: 30px;
 		margin: 0 auto;
 		justify-content: space-between;
 	}
 
 	.content-massage {
-		width: 50%;
+		display: flex;
+		width: 90%;
+		justify-content: space-around;
 		margin: 0 auto;
-		text-align: center;
-		padding: 20px;
-		// height: 300px;
-		background-color: #e7f9bf;
-		-webkit-box-shadow: 1px 1px 7px 1px #f8aa0d;
-		box-shadow: 1px 1px 7px 1px #f8aa0d;
-		#resultXtext,
-		#resultYtext {
-			width: 49%;
-			font-size: 16px;
+		padding: 10px;
+		// background-color: #e7f9bf;
+		// -webkit-box-shadow: 1px 1px 8px 1px #dddddd;
+		// box-shadow: 1px 1px 7px 1px #dddddd;
+		min-height: 300px;
+
+		#output {
+			display: block;
+			width: 45%;
+			margin: 0;
 			text-align: center;
-			height: 80px;
-			background-color: #fcfdd7;
-			color: #000;
-			padding: 10px;
-			display: none;
+			padding: 60px 0;
+			border: 2px solid #000000;
+			border-radius: 10px;
+			height: 280px;
+			font-size: 20px;
+			span {
+				color: #25de39;
+				font-weight: bold;
+				font-size: 26px;
+			}
+
+			h2 {
+				margin: 0;
+				padding: 0;
+				color:  #f8aa0d;
+				font-size: 22px;
+			}
 		}
 
+		span {
+			color: #25de39;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		h2 {
+			margin: 0;
+			padding: 0;
+		}
+
+		.results {
+			display: block;
+			margin: 0;
+			// border: 2px solid blue;
+			border-radius: 10px;
+			width: 50%;
+			justify-content: space-between;
+			padding: 20px;
+			min-height: 280px;
+			background-image: url('/images/RockPaperScissors.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			.results-header {
+				// height: 30%;
+				width: 100%;
+				margin: 0;
+				padding: 20px;
+				text-align: center;
+
+				h4 {
+					margin: 0;
+					padding: 0;
+				}
+			}
+
+			#resultXtext,
+			#resultYtext {
+				width: 49%;
+				height: 50%;
+				font-size: 20px;
+				background-color: #25de39;
+				color:#f8f8f8;
+				padding: 25px 20px;
+				display: none;
+				border-radius: 20px;
+				text-align: center;
+				margin: 0 auto;
+				opacity: .9;
+				span {
+					color: #000000;
+					font-size: 16px;
+				}
+			}
+		}
 	}
 
 	.main-buttons {
@@ -60,16 +130,15 @@ body {
 	}
 
 	.modal {
-		// margin: 0 auto;
-		width: 50%;
+		width: 40%;
 		background-color: #ffffff;
 		color: #000000;
 		border: 1px solid blue;
 		display: none;
 		position: absolute;
 		top: 20%;
-		left: 50%;
-		height: auto;
+		left: 30%;
+
 		.modal-header {
 			display: block;
 			margin: 0;
@@ -100,7 +169,6 @@ body {
 	}
 }
 
-
 button {
 	display: inline-block;
 	vertical-align: middle;
@@ -120,12 +188,4 @@ button {
 button:hover {
 	opacity: 0.7;
 	cursor: pointer;
-}
-
-#output {
-	height: 150px;
-	max-width: 100%;
-	margin: 0 auto;
-	vertical-align: middle;
-	font-size: 18px;
 }

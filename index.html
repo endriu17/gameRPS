@@ -21,8 +21,13 @@
 
   <div class="content-massage">
     <div id="output"></div>
-    <div id="resultXtext"></div>
-    <div id="resultYtext"></div>
+    <div class="results">
+      <div class="results-header"></div>
+      <div class="results-background">
+      </div>
+      <div id="resultXtext"></div>
+      <div id="resultYtext"></div>
+    </div>
   </div>
 
   <div class="main-buttons">
@@ -31,6 +36,7 @@
   </div>
 
   <div class="modals">
+
     <div class="modal" id="modal-one">
       <div class="modal-header">
         <h1>Results:</h1>
@@ -45,20 +51,19 @@
         <h4></h4>
       </div>
     </div>
+
     <div class="modal" id="modal-two">
       <div class="modal-header">
-        <h1>Results:</h1>
+        <h1>Enter round number:</h1>
       </div>
       <div class="modal-content">
-        <div id="tableX">
-        </div>
-        <div id="tableY">
-        </div>
+        <input type="text" name="rounds" value="">
       </div>
       <div class="modal-footer">
         <h4></h4>
       </div>
     </div>
+
   </div>
   <script src="js/index.js"></script>
 

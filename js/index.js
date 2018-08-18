@@ -14,6 +14,7 @@ var btnScissors = document.getElementById('scissors-button');
 var btnNewGame = document.getElementById('newGame-button');
 var btnReset = document.getElementById('reset-button');
 var buttons = document.querySelectorAll('.player-move');
+var resultsHeader = document.querySelector('.results-header');
 
 var modalHeader = document.querySelector('.modal-header');
 
@@ -72,14 +73,22 @@ btnReset.addEventListener('click', function resetGame() {
 btnNewGame.addEventListener('click', function newGame() {
   var newGameBtn = window.prompt('Enter round number');
   enableBtn();
-  output.innerHTML = "<br>You will play " + newGameBtn + " rounds!" + "<br><br> Let's play the game! <br><br> Your choice!";
+  output.innerHTML = "<span>You will play " + newGameBtn + " rounds!</span>" + "<br><br> Let's play the game! <br><br> <h2>Your choice!</h2>";
   params.rounds = newGameBtn;
   resultXtext.style.display = "inline-block";
   resultYtext.style.display = "inline-block";
   document.querySelector('.content-massage').style.height = "300px";
 });
 
+/*   modal close function ON CLICK IN MODAL  */
 
+var modalClose = document.querySelector('.modal');
+modalClose.addEventListener('click', closeModal);
+function closeModal(){
+  modalClose.style.display = "none";
+}
+
+/*  loop listener for PLAY BUTTONS  */
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function playerMoveNew(btnID) {
     var btnId = event.currentTarget.getAttribute('data-move');
@@ -101,7 +110,9 @@ function disableBtn() {
   document.getElementById("rock-button").disabled = true;
   document.getElementById("paper-button").disabled = true;
   document.getElementById("scissors-button").disabled = true;
-  output.innerHTML = "<br><br> Click NEW GAME button " + "<br><br> to play the game...!";
+  output.innerHTML = " Click <span>NEW GAME</span> button " + "<br><br> to play the game...!";
+  resultXtext.innerHTML = 'You:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countX;
+  resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY;
 }
 
 // results function
@@ -116,6 +127,8 @@ function playResult() {
     params.computerWon++;
     params.countY = 0;
     params.countX = 0;
+    params.computerWin = 0;
+    params.playerWin = 0;
     tableY.innerHTML = 'Computer winnings: <br><br>' + '<b>' + params.computerWon + '</b>';
     tableX.innerHTML = 'Your winnings: <br><br>' + '<b>' + params.playerWon + '</b>';
     document.querySelector('#modal-one').style.display = "block";
@@ -127,50 +140,52 @@ function playResult() {
     params.playerWon++;
     params.countY = 0;
     params.countX = 0;
+    params.computerWin = 0;
+    params.playerWin = 0;
     tableX.innerHTML = 'Your winnings: <br><br>' + '<b>' + params.playerWon + '</b>';
     tableY.innerHTML = 'Computer winnings: <br><br>' + '<b>' + params.computerWon + '</b>';
     document.querySelector('#modal-one').style.display = "block";
   }
-  resultXtext.innerHTML = 'You:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countX + '</b>' + '<br><br><em> It is ' + '<b>' + (params.rounds - params.countX) + '</b>' + ' wins left to win!</em>';
-  resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY + '</b>' + '<br><br><em>  It is ' + '<b>' + (params.rounds - params.countY) + '</b>' + ' wins left to win!</em>';
+  resultXtext.innerHTML = 'You:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countX + '</b>' + '<br><br><span><em> It is ' + '<b>' + (params.rounds - params.countX) + '</b>' + ' wins left to win!</em></span>';
+  resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY + '</b>' + '<br><br><span><em>  It is ' + '<b>' + (params.rounds - params.countY) + '</b>' + ' wins left to win!</em></span>';
 }
 
 // play function
 
 function playerAction(comp, player) {
   var comp;
-  var compScore = compChoice();
-  comp = '<br>Computer choice: ' + compScore;
+  var compMv = compChoice();
+  comp = '<div>Computer choice: ' + '<h2>' + compMv + '</h2></div>';
   var playerMv;
-  playerMv = 'Your choice: ' + player;
+  playerMv = '<div>Your choice: ' + '<h2>' + player + '</h2></div>';
   var score;
-  if (compScore === player) {
+  if (compMv === player) {
     score = 'REMIS';
-  } else if (compScore === 'rock' && player === 'paper') {
+  } else if (compMv === 'rock' && player === 'paper') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-  } else if (compScore === 'rock' && player === 'scissors') {
+  } else if (compMv === 'rock' && player === 'scissors') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
-  } else if (compScore === 'paper' && player === 'rock') {
+  } else if (compMv === 'paper' && player === 'rock') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
-  } else if (compScore === 'paper' && player === 'scissors') {
+  } else if (compMv === 'paper' && player === 'scissors') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-  } else if (compScore === 'scissors' && player === 'rock') {
+  } else if (compMv === 'scissors' && player === 'rock') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-  } else if (compScore === 'scissors' && player === 'paper') {
+  } else if (compMv === 'scissors' && player === 'paper') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
   }
-  output.innerHTML = '<br>' + playerMv + '<br>' + comp + '<br><br>' + score;
+  output.innerHTML = '<span>' + score + '</span>' + '<br><br>' + playerMv + '<br>' + comp;
   playResult();
 }
