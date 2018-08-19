@@ -96,18 +96,18 @@ body .content-massage .results #resultYtext {
   font-size: 20px;
   background-color: #25de39;
   color: #f8f8f8;
-  padding: 25px 20px;
+  padding: 20px;
   display: none;
   border-radius: 20px;
   text-align: center;
   margin: 0 auto;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 body .content-massage .results #resultXtext span,
 body .content-massage .results #resultYtext span {
   color: #000000;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body .main-buttons {
@@ -128,14 +128,16 @@ body .main-buttons #reset-button {
 }
 
 body .modal {
-  width: 40%;
-  background-color: #ffffff;
+  width: 60%;
+  background-color: #f2f3ee;
   color: #000000;
-  border: 1px solid blue;
   display: none;
   position: absolute;
-  top: 20%;
-  left: 30%;
+  top: 25%;
+  left: 20%;
+  min-height: 60%;
+  -webkit-box-shadow: 1px 1px 10px 1px #f8aa0d;
+  box-shadow: 1px 1px 10px 1px #f8aa0d;
 }
 
 body .modal .modal-header {
@@ -146,9 +148,16 @@ body .modal .modal-header {
   text-align: center;
 }
 
-body .modal .modal-header h1 {
+body .modal .modal-header h2 {
   padding: 0;
   margin: 0;
+  color: #f01823;
+}
+
+body .modal .modal-header span {
+  color: #25de39;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 body .modal .modal-content {
@@ -158,6 +167,24 @@ body .modal .modal-content {
   padding: 20px;
   width: 100%;
   text-align: center;
+}
+
+body .modal .modal-content table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 100%;
+  table-layout: auto;
+}
+
+body .modal .modal-content table td,
+body .modal .modal-content table th {
+  border: 1px solid black;
+}
+
+body .modal .modal-content .modal-table--results {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body .modal .modal-footer {
