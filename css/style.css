@@ -73,7 +73,7 @@ body .content-massage .results {
   justify-content: space-between;
   padding: 20px;
   min-height: 280px;
-  background-image: url("images/RockPaperScissors.png");
+  background-image: url("../images/RockPaperScissors.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
