@@ -70,7 +70,7 @@ body {
 			justify-content: space-between;
 			padding: 20px;
 			min-height: 280px;
-			background-image: url('/images/RockPaperScissors.png');
+			background-image: url("../images/RockPaperScissors.png");
 			background-repeat: no-repeat;
 			background-size: cover;
 
@@ -131,12 +131,13 @@ body {
 		color: #000000;
 		display: none;
 		position: absolute;
+		border-radius: 10px;
 		top: 25%;
 		left: 20%;
 		min-height: 60%;
-		-webkit-box-shadow: 1px 1px 10px 1px #f8aa0d;
-		box-shadow: 1px 1px 10px 1px #f8aa0d;
-
+		// -webkit-box-shadow: 1px 1px 10px 1px #f8aa0d;
+		// box-shadow: 1px 1px 10px 1px #f8aa0d;
+			border: 2px solid  #f8aa0d;
 		.modal-header {
 			display: block;
 			margin: 0;

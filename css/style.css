@@ -134,11 +134,11 @@ body .modal {
   color: #000000;
   display: none;
   position: absolute;
+  border-radius: 10px;
   top: 25%;
   left: 20%;
   min-height: 60%;
-  -webkit-box-shadow: 1px 1px 10px 1px #f8aa0d;
-  box-shadow: 1px 1px 10px 1px #f8aa0d;
+  border: 2px solid  #f8aa0d;
 }
 
 body .modal .modal-header {
