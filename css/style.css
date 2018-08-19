@@ -38,6 +38,7 @@ body .content-massage #output {
   border-radius: 10px;
   height: 280px;
   font-size: 20px;
+  background-color: #ffffff;
 }
 
 body .content-massage #output span {
