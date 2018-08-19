@@ -155,8 +155,6 @@ function playResult() {
     params.countX = 0;
     params.computerWin = 0;
     params.playerWin = 0;
-    // tableX.innerHTML = 'Your winnings: <br><br>' + '<b>' + params.playerWon + '</b>';
-    // tableY.innerHTML = 'Computer winnings: <br><br>' + '<b>' + params.computerWon + '</b>';
     document.querySelector('#modal-one').style.display = "block";
     var tableHeader = '<th>Round:</th>' + '<th>Your move:</th>' +'<th>Comp move:</th>' +'<th>Result:</th>' +'<th>Score:</th>';
     modalTable.innerHTML = tableHeader;
