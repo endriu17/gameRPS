@@ -41,7 +41,7 @@ var cleanDiv = function(divName) {
   document.getElementById(divName).innerHTML = "";
 }
 
-btnReset.addEventListener('click', resetGame());
+btnReset.addEventListener('click', resetGame);
 
 function resetGame() {
   cleanDiv('resultXtext');
@@ -162,42 +162,16 @@ function playerAction(comp, player) {
   if (compMv === player) {
     score = 'TIE';
     updateParams();
-  } else if (compMv === 'rock' && player === 'paper') {
+  }  else if ((compMv === 'rock' && player === 'paper') || (compMv === 'paper' && player === 'scissors') || (compMv === 'scissors' && player === 'rock')) {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
     updateParams();
-
-  } else if (compMv === 'rock' && player === 'scissors') {
+  } else if ((compMv === 'rock' && player === 'scissors') || (compMv === 'paper' && player === 'rock') || (compMv === 'scissors' && player === 'paper')){
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
     updateParams();
-
-  } else if (compMv === 'paper' && player === 'rock') {
-    score = 'Computer WON!';
-    params.computerWin++;
-    params.countY++;
-    updateParams();
-
-  } else if (compMv === 'paper' && player === 'scissors') {
-    score = 'You WON!';
-    params.playerWin++;
-    params.countX++;
-    updateParams();
-
-  } else if (compMv === 'scissors' && player === 'rock') {
-    score = 'You WON!';
-    params.playerWin++;
-    params.countX++;
-    updateParams();
-
-  } else if (compMv === 'scissors' && player === 'paper') {
-    score = 'Computer WON!';
-    params.computerWin++;
-    params.countY++;
-    updateParams();
-
   }
   output.innerHTML = '<span>' + score + '</span>' + '<br><br>' + playerMv + '<br>' + comp;
   playResult();
