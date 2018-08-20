@@ -1,5 +1,4 @@
-/// main variables
-
+/*   main variables   */
 var output = document.getElementById('output');
 var resultXtext = document.getElementById('resultXtext');
 var resultYtext = document.getElementById('resultYtext');
@@ -31,30 +30,13 @@ var params = {
 }
 disableBtn();
 
-// variable that collects the number of completed rounds
-
-var rounds = btnNewGame.addEventListener('click', function newGame() {
-  return rounds;
-});
-
-// computer random choice function
-
+/* computer random choice function */
 function compChoice() {
   var randomChoice = Math.floor(Math.random() * 3) + 1;
-  if (randomChoice === 1) {
-    randomChoice = 'rock';
-    return randomChoice;
-  } else if (randomChoice === 2) {
-    randomChoice = 'paper';
-    return randomChoice;
-  } else if (randomChoice === 3) {
-    randomChoice = 'scissors';
-    return randomChoice;
-  }
+  choices = ['', 'rock', 'paper', 'scissors']; return choices[randomChoice];
 }
 
-// cleaning div function and reset button
-
+/*  cleaning div function and reset button   */
 var cleanDiv = function(divName) {
   document.getElementById(divName).innerHTML = "";
 }
@@ -74,8 +56,8 @@ function resetGame() {
   modalTable.innerHTML = '';
   disableBtn();
 }
-// button NEW GAME
 
+/* button NEW GAME */
 btnNewGame.addEventListener('click', function newGame() {
   var newGameBtn = window.prompt('Enter round number');
   enableBtn();
@@ -87,7 +69,6 @@ btnNewGame.addEventListener('click', function newGame() {
 });
 
 /*   modal close function ON CLICK IN MODAL  */
-
 var modalClose = document.querySelector('.modal');
 modalClose.addEventListener('click', closeModal);
 
@@ -100,14 +81,12 @@ function closeModal() {
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function playerMoveNew(btnID) {
     var btnId = event.currentTarget.getAttribute('data-move');
-    var playerCh = btnId;
     var compCh = compChoice();
-    playerAction(compCh, playerCh);
+    playerAction(compCh, btnId);
   });
 }
 
-// disable - enable buttons functions
-
+/* disable - enable buttons functions  */
 function enableBtn() {
   document.getElementById("rock-button").disabled = false;
   document.getElementById("paper-button").disabled = false;
@@ -123,52 +102,44 @@ function disableBtn() {
   resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY;
 }
 
-// results function
-
+/* results function  */
 function playResult() {
-
-  if (params.computerWin == params.rounds) {
+  function ifWinner() {
     cleanDiv('resultXtext');
     cleanDiv('resultYtext');
     disableBtn();
-    modalHeader.innerHTML = '<br><h2>Computer won!</h2> <br> Will You play again? <br><br> Click the <span>NEW GAME</span> button!';
-    params.computerWon++;
     params.queue++;
     params.countY = 0;
     params.countX = 0;
     params.computerWin = 0;
     params.playerWin = 0;
     document.querySelector('#modal-one').style.display = "block";
-    var tableHeader = '<th>Round:</th>' + '<th>Your move:</th>' +'<th>Comp move:</th>' +'<th>Result:</th>' +'<th>Score:</th>';
+    var tableHeader = '<th>Round:</th>' + '<th>Your move:</th>' + '<th>Comp move:</th>' + '<th>Result:</th>' + '<th>Score:</th>';
     modalTable.innerHTML = tableHeader;
     for (var i = 0; i < Object.entries(params.progress).length; i++) {
-      modalTable.innerHTML = modalTable.innerHTML + '<td>'+ params.progress[i].Round +'</td>'+ '<td>'+ params.progress[i].You +'</td>'+ '<td>'+ params.progress[i].Computer +'</td>'+ '<td>'+ params.progress[i].Result +'</td>'+ '<td>'+ params.progress[i].X + ':' + params.progress[i].Y +'</td>';
-    }
-  } else if (params.playerWin == params.rounds) {
-    cleanDiv('resultXtext');
-    cleanDiv('resultYtext');
-    disableBtn();
-    modalHeader.innerHTML = '<br><h2>YOU WON THE ENTIRE GAME!!!</h2> <br> Will You play again? <br><br> Click the <span>NEW GAME</span> button!';
-    params.playerWon++;
-    params.queue++;
-    params.countY = 0;
-    params.countX = 0;
-    params.computerWin = 0;
-    params.playerWin = 0;
-    document.querySelector('#modal-one').style.display = "block";
-    var tableHeader = '<th>Round:</th>' + '<th>Your move:</th>' +'<th>Comp move:</th>' +'<th>Result:</th>' +'<th>Score:</th>';
-    modalTable.innerHTML = tableHeader;
-    for (var i = 0; i < Object.entries(params.progress).length; i++) {
-      modalTable.innerHTML = modalTable.innerHTML + '<td>'+ params.progress[i].Round +'</td>'+ '<td>'+ params.progress[i].You +'</td>'+ '<td>'+ params.progress[i].Computer +'</td>'+ '<td>'+ params.progress[i].Result +'</td>'+ '<td>'+ params.progress[i].X + ':' + params.progress[i].Y +'</td>';
+      modalTable.innerHTML = modalTable.innerHTML + '<td>' + params.progress[i].Round + '</td>' +
+        '<td>' + params.progress[i].You + '</td>' +
+        '<td>' + params.progress[i].Computer + '</td>' +
+        '<td>' + params.progress[i].Result + '</td>' +
+        '<td>' + params.progress[i].X + ':' + params.progress[i].Y + '</td>';
     }
   }
-  resultXtext.innerHTML = 'You:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countX + '</b>' + '<br><br><span><em> It is ' + '<b>' + (params.rounds - params.countX) + '</b>' + ' wins left to win!</em></span>';
-  resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY + '</b>' + '<br><br><span><em>  It is ' + '<b>' + (params.rounds - params.countY) + '</b>' + ' wins left to win!</em></span>';
+  if (params.computerWin == params.rounds) {
+    ifWinner();
+    params.computerWon++;
+    modalHeader.innerHTML = '<br><h2>Computer won!</h2> <br> Will You play again? <br><br> Click the <span>NEW GAME</span> button!';
+  } else if (params.playerWin == params.rounds) {
+    ifWinner();
+    params.playerWon++;
+    modalHeader.innerHTML = '<br><h2>YOU WON THE ENTIRE GAME!!!</h2> <br> Will You play again? <br><br> Click the <span>NEW GAME</span> button!';
+  }
+  resultXtext.innerHTML = 'You:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countX + '</b>' +
+    '<br><br><span><em> It is ' + '<b>' + (params.rounds - params.countX) + '</b>' + ' wins left to win!</em></span>';
+  resultYtext.innerHTML = 'Computer:&nbsp;&nbsp;&nbsp;&nbsp;' + '<b>' + params.countY + '</b>' +
+    '<br><br><span><em>  It is ' + '<b>' + (params.rounds - params.countY) + '</b>' + ' wins left to win!</em></span>';
 }
 
-// play function
-var countRounds = (params.countX + params.countY);
-
+/* play function */
 function playerAction(comp, player) {
   var comp;
   var compMv = compChoice();
@@ -177,8 +148,7 @@ function playerAction(comp, player) {
   playerMv = '<div>Your choice: ' + '<h2>' + player + '</h2></div>';
   var score;
 
-  if (compMv === player) {
-    score = 'REMIS';
+  function updateParams() {
     params.queue++;
     params.progress.push({
       Round: params.queue,
@@ -188,83 +158,46 @@ function playerAction(comp, player) {
       X: params.countX,
       Y: params.countY
     });
+  }
+  if (compMv === player) {
+    score = 'TIE';
+    updateParams();
   } else if (compMv === 'rock' && player === 'paper') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-    params.queue++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   } else if (compMv === 'rock' && player === 'scissors') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
-    params.queue++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   } else if (compMv === 'paper' && player === 'rock') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
-    params.queue++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   } else if (compMv === 'paper' && player === 'scissors') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   } else if (compMv === 'scissors' && player === 'rock') {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
-    params.queue++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   } else if (compMv === 'scissors' && player === 'paper') {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
-    params.queue++;
-    params.progress.push({
-      Round: params.queue,
-      You: player,
-      Computer: compMv,
-      Result: score,
-      X: params.countX,
-      Y: params.countY
-    });
+    updateParams();
+
   }
   output.innerHTML = '<span>' + score + '</span>' + '<br><br>' + playerMv + '<br>' + comp;
   playResult();
