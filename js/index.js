@@ -33,11 +33,12 @@ disableBtn();
 /* computer random choice function */
 function compChoice() {
   var randomChoice = Math.floor(Math.random() * 3) + 1;
-  choices = ['', 'rock', 'paper', 'scissors']; return choices[randomChoice];
+  choices = ['', 'rock', 'paper', 'scissors'];
+  return choices[randomChoice];
 }
 
 /*  cleaning div function and reset button   */
-var cleanDiv = function(divName) {
+var cleanDiv = function (divName) {
   document.getElementById(divName).innerHTML = "";
 }
 
@@ -60,12 +61,18 @@ function resetGame() {
 /* button NEW GAME */
 btnNewGame.addEventListener('click', function newGame() {
   var newGameBtn = window.prompt('Enter round number');
-  enableBtn();
-  output.innerHTML = "<span>You will play " + newGameBtn + " rounds!</span>" + "<br><br> Let's play the game! <br><br> <h2>Your choice!</h2>";
-  params.rounds = newGameBtn;
-  resultXtext.style.display = "inline-block";
-  resultYtext.style.display = "inline-block";
-  document.querySelector('.content-massage').style.height = "300px";
+  console.log(newGameBtn);
+  
+  if (newGameBtn == 0 || newGameBtn == null) {
+    output.innerHTML = "<span>You need to enter rounds number!</span><br><br>It can't be: <strong>0</strong> or empty field<br><br><h2>Try again!</h2>";
+  } else {
+    enableBtn();
+    output.innerHTML = "<span>You will play " + newGameBtn + " rounds!</span>" + "<br><br> Let's play the game! <br><br> <h2>Your choice!</h2>";
+    params.rounds = newGameBtn;
+    resultXtext.style.display = "inline-block";
+    resultYtext.style.display = "inline-block";
+    document.querySelector('.content-massage').style.height = "300px";
+  }
 });
 
 /*   modal close function ON CLICK IN MODAL  */
@@ -162,12 +169,12 @@ function playerAction(comp, player) {
   if (compMv === player) {
     score = 'TIE';
     updateParams();
-  }  else if ((compMv === 'rock' && player === 'paper') || (compMv === 'paper' && player === 'scissors') || (compMv === 'scissors' && player === 'rock')) {
+  } else if ((compMv === 'rock' && player === 'paper') || (compMv === 'paper' && player === 'scissors') || (compMv === 'scissors' && player === 'rock')) {
     score = 'You WON!';
     params.playerWin++;
     params.countX++;
     updateParams();
-  } else if ((compMv === 'rock' && player === 'scissors') || (compMv === 'paper' && player === 'rock') || (compMv === 'scissors' && player === 'paper')){
+  } else if ((compMv === 'rock' && player === 'scissors') || (compMv === 'paper' && player === 'rock') || (compMv === 'scissors' && player === 'paper')) {
     score = 'Computer WON!';
     params.computerWin++;
     params.countY++;
